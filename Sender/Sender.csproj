@@ -109,7 +109,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThomasClaudiusHuber.EventHub.Common\Common.csproj">
+    <ProjectReference Include="..\Common\Common.csproj">
       <Project>{7347c4a1-c9b1-4cf2-9e6a-7e9bb610efa4}</Project>
       <Name>Common</Name>
     </ProjectReference>
