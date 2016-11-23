@@ -13,7 +13,7 @@ namespace ThomasClaudiusHuber.EventHub.Sender.DataAccess
     {
       try
       {
-        EventHubClient client = EventHubClient.CreateFromConnectionString(connectionString);
+        var client = EventHubClient.CreateFromConnectionString(connectionString);
 
         string sensorDataJson = JsonConvert.SerializeObject(sensorData);
 
@@ -21,10 +21,12 @@ namespace ThomasClaudiusHuber.EventHub.Sender.DataAccess
 
         // NOTE: For multipe events there's also a SendBatchAsync-event
         await client.SendAsync(eventData);
-        
+
+        await client.CloseAsync();
+
         return new PublishResult { IsSuccess = true };
       }
-      catch(Exception ex)
+      catch (Exception ex)
       {
         return new PublishResult { Error = ex.Message };
       }
